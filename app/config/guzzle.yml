@@ -1,0 +1,10 @@
+guzzle:
+    logging: true
+
+    clients:
+        api_oauth_server:
+            base_url: %server_url%
+
+            options:
+                headers:
+                    Accept: "application/json"
