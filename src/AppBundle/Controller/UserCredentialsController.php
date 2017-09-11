@@ -12,15 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * @author    Tomasz Karliński <karlinski.tomasz@gmail.com>
  * @copyright 2017 tkarlinski
  * @package   AppBundle\Controller
- * @since     2017-09-10
+ * @since     2017-09-11
  * @version   Release: $Id$
  */
-class ClientCredentialsController extends Controller
+class UserCredentialsController extends Controller
 {
     const ACTION_TOKEN = '/app_dev.php/token';
 
     /**
-     * @Route("/cc/authenticate")
+     * @Route("/uc/password")
      *
      * @Template()
      * @param Request $request
@@ -32,7 +32,9 @@ class ClientCredentialsController extends Controller
             $client = $this->getGuzzleClient();
             $response = $client->post(self::ACTION_TOKEN, [
                 'form_params' => [
-                    'grant_type' => 'client_credentials',
+                    'grant_type' => 'password',
+                    'username' => 'tomek',
+                    'password' => 'test123',
                     'scope' => 'scope1',
                 ],
                 'auth' => [
