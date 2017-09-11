@@ -20,6 +20,14 @@ class ClientCredentialsController extends Controller
     const ACTION_TOKEN = '/app_dev.php/token';
 
     /**
+     * @return Client
+     */
+    protected function getGuzzleClient()
+    {
+        return $this->get('guzzle.client.api_oauth_server');
+    }
+
+    /**
      * @Route("/cc/authenticate")
      *
      * @Template()
@@ -52,11 +60,6 @@ class ClientCredentialsController extends Controller
         return [];
     }
 
-    /**
-     * @return Client
-     */
-    protected function getGuzzleClient()
-    {
-        return $this->get('guzzle.client.api_oauth_server');
-    }
+
+
 }

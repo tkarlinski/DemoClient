@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class UserCredentialsController extends Controller
 {
     const ACTION_TOKEN = '/app_dev.php/token';
+    const ACTION_VERIFY = '/app_dev.php/verify';
 
     /**
      * @Route("/uc/password")
@@ -52,6 +53,34 @@ class UserCredentialsController extends Controller
         }
 
         return [];
+    }
+
+    /**
+     * @Route("/uc/verify")
+     *
+     * @Template()
+     * @param Request $request
+     * @return array
+     */
+    public function verifyResourceAction(Request $request)
+    {
+        try {
+            $client = $this->getGuzzleClient();
+
+            $url = self::ACTION_VERIFY . '?access_token=f758cc639f016e36bbea04a0f3af1173417fcdc3';
+
+            $response = $client->get($url, []);
+
+            $result = json_decode($response->getBody(), true);
+
+            var_dump($result);
+
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        return [];
+
     }
 
     /**
