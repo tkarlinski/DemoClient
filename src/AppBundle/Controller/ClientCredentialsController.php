@@ -51,6 +51,7 @@ class ClientCredentialsController extends Controller
 
             $result = json_decode($response->getBody(), true);
 
+            echo '<br><b>Response</b><br>';
             var_dump($result);
 
         } catch (\Exception $e) {
